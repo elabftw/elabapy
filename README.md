@@ -12,6 +12,10 @@ or via sources:
 
     python setup.py install
 
+## How to use
+
+### [Read the docs](https://elabftw.readthedocs.io/en/latest/api.html)
+
 ## Links
 
 - Documentation: https://elabftw.readthedocs.io/en/latest/api.html
