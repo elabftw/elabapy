@@ -35,5 +35,17 @@ class Manager(BaseAPI):
         """
         return self.get_data("items/" + str(id))
 
+    def post_experiment(self, id, params):
+        """
+            Change an experiment title/body/date
+        """
+        return self.post_data("experiments/" + str(id), params)
+
+    def post_item(self, id, params):
+        """
+            Change an item title/body/date
+        """
+        return self.post_data("items/" + str(id), params)
+
     def __str__(self):
         return "<Manager>"
