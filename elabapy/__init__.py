@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """A python module to interact with elabftw API"""
 
-__version__ = "0.1.0"
+__version__ = "0.3.0"
 __author__ = "Nicolas CARPi"
 __author_email__ = "nicolas.carpi@curie.fr"
 __license__ = "GPL v3"
