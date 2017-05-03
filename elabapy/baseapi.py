@@ -157,6 +157,33 @@ class BaseAPI(object):
 
         return data
 
+    def post_file(self, url, params):
+        """
+            POST files
+        """
+        url = urljoin(self.endpoint, url)
+        headers = {'Authorization': self.token}
+        req = requests.post(url, headers=headers, files=params, verify=False)
+
+        if req.status_code == 204:
+            return True
+
+        if req.status_code == 404:
+            raise NotFoundError()
+
+        try:
+            data = req.json()
+        except ValueError as e:
+            raise JSONReadError(
+                'Read failed from API: %s' % str(e)
+            )
+
+        if not req.ok:
+            msg = [data[m] for m in ("id", "message") if m in data][1]
+            raise DataReadError(msg)
+
+        return data
+
     def __str__(self):
         return "<%s>" % self.__class__.__name__
 

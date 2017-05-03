@@ -47,5 +47,17 @@ class Manager(BaseAPI):
         """
         return self.post_data("items/" + str(id), params)
 
+    def upload_to_experiment(self, id, params):
+        """
+            Upload a file to an experiment
+        """
+        return self.post_file("experiments/" + str(id), params)
+
+    def upload_to_item(self, id, params):
+        """
+            Upload a file to an item
+        """
+        return self.post_file("items/" + str(id), params)
+
     def __str__(self):
         return "<Manager>"
