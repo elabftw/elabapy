@@ -20,3 +20,19 @@ or via sources:
 
 - Documentation: https://elabftw.readthedocs.io/en/latest/api.html
 - PyPI page: https://pypi.python.org/pypi/elabapy
+
+## Update version
+
+Version needs to be changed in `setup.py` and `elabapy/__init__.py`.
+
+## Create new release
+
+~~~bash
+git tag -s $version -m '$version'
+git push --tags
+python setup.py sdist bdist_egg bdist_wheel
+~~~
+
+## Update PIP
+
+Go to https://pypi.python.org/pypi?%3Aaction=submit_form and upload the PKG-INFO, then upload the .tar.gz, egg and wheel in `dist/`.
