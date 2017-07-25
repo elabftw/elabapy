@@ -132,7 +132,7 @@ class BaseAPI(object):
 
     def post_data(self, url, params):
         """
-            POST some stuff to change title/date/body
+            POST some stuff to change title/date/body or create experiment
         """
         url = urljoin(self.endpoint, url)
         headers = {'Authorization': self.token}

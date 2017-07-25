@@ -11,6 +11,12 @@ class Manager(BaseAPI):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+    def create_experiment(self):
+        """
+            Create an experiment
+        """
+        return self.post_data("experiments", params = {})
+
     def get_all_experiments(self):
         """
             This function returns a list of all experiments.
