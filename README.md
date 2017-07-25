@@ -30,9 +30,5 @@ Version needs to be changed in `setup.py` and `elabapy/__init__.py`.
 ~~~bash
 git tag -s $version -m '$version'
 git push --tags
-python setup.py sdist bdist_egg bdist_wheel
+python setup.py sdist bdist_egg bdist_wheel upload
 ~~~
-
-## Update PIP
-
-Go to https://pypi.python.org/pypi?%3Aaction=submit_form and upload the PKG-INFO, then upload the .tar.gz, egg and wheel in `dist/`.
