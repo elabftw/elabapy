@@ -14,12 +14,12 @@ or via sources:
 
 ## How to use
 
-### [Read the docs](https://elabftw.readthedocs.io/en/latest/api.html)
+### [Read the docs](https://doc.elabftw.net/api.html)
 
 ## Links
 
-- Documentation: https://elabftw.readthedocs.io/en/latest/api.html
-- PyPI page: https://pypi.python.org/pypi/elabapy
+- Documentation: https://doc.elabftw.net/api.html
+- PyPI page: https://pypi.org/project/elabapy/
 
 ## Update version
 
