@@ -1,6 +1,10 @@
 # elabapy
 
-This library provides easy access to eLabFTW's API to list or update experiments or items.
+[![release](https://img.shields.io/pypi/v/elabapy.svg)](https://pypi.org/project/elabapy/)
+[![wheel](https://img.shields.io/pypi/wheel/elabapy.svg)](https://pypi.org/project/elabapy/)
+
+This Python 3 library provides easy access to [eLabFTW](https://www.elabftw.net)'s API to list or update experiments or items.
+
 
 ## How to install
 
