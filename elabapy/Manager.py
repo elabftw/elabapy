@@ -65,5 +65,17 @@ class Manager(BaseAPI):
         """
         return self.post_file("items/" + str(id), params)
 
+    def add_tag_to_experiment(self, id, params):
+        """
+            Add a tag to an experiment
+        """
+        return self.post_data("experiments/" + str(id), params)
+
+    def add_tag_to_item(self, id, params):
+        """
+            Add a tag to an item
+        """
+        return self.post_data("items/" + str(id), params)
+
     def __str__(self):
         return "<Manager>"
