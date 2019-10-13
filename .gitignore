@@ -29,3 +29,5 @@ elab.py
 MANIFEST
 
 .cache
+
+curl.sh

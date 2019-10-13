@@ -13,18 +13,17 @@ POST = 'POST'
 DELETE = 'DELETE'
 PUT = 'PUT'
 
+ACCESS_FORBIDDEN_MSG = "You don't have permission to access this resource!"
+
 class Error(Exception):
     """Base exception class for this module"""
     pass
 
-
 class SetupError(Error):
     pass
 
-
 class DataReadError(Error):
     pass
-
 
 class JSONReadError(Error):
     pass
@@ -32,7 +31,6 @@ class JSONReadError(Error):
 
 class NotFoundError(Error):
     pass
-
 
 class BaseAPI(object):
     """
@@ -117,6 +115,9 @@ class BaseAPI(object):
         if req.status_code == 404:
             raise NotFoundError()
 
+        if req.status_code == 403:
+            return ACCESS_FORBIDDEN_MSG
+
         try:
             data = req.json()
         except ValueError as e:
@@ -143,6 +144,9 @@ class BaseAPI(object):
 
         if req.status_code == 404:
             raise NotFoundError()
+
+        if req.status_code == 403:
+            return ACCESS_FORBIDDEN_MSG
 
         try:
             data = req.json()

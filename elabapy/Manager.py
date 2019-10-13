@@ -15,7 +15,13 @@ class Manager(BaseAPI):
         """
             Create an experiment
         """
-        return self.post_data("experiments", params = {})
+        return self.post_data("experiments", params={})
+
+    def create_item(self, id):
+        """
+            Create an item, the id is the items_types id
+        """
+        return self.post_data("items/" + str(id), params={})
 
     def get_all_experiments(self):
         """
@@ -40,6 +46,18 @@ class Manager(BaseAPI):
             Get data from an item
         """
         return self.get_data("items/" + str(id))
+
+    def get_items_types(self):
+        """
+            Get list of items_types
+        """
+        return self.get_data("items_types/")
+
+    def get_status(self):
+        """
+            Get list of status
+        """
+        return self.get_data("status/")
 
     def post_experiment(self, id, params):
         """
