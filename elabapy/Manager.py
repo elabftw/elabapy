@@ -68,8 +68,16 @@ class Manager(BaseAPI):
     def post_item(self, id, params):
         """
             Change an item title/body/date
+            params must contain title, date and body
         """
         return self.post_data("items/" + str(id), params)
+
+    def add_link_to_experiment(self, id, params):
+        """
+            Add a link to an experiment
+            params must contain "link=<ITEM_ID>"
+        """
+        return self.post_data("experiments/" + str(id), params)
 
     def upload_to_experiment(self, id, params):
         """
