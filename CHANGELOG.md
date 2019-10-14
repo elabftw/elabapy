@@ -1,10 +1,8 @@
 # Changelog for elabapy
-# https://github.com/elabftw/elabapy
-# https://www.elabftw.net
 
-# Version 0.5.0
+## Version 0.5.0
 
-## Added
+### Added
 
 * Create item
 * Get items types
@@ -12,25 +10,25 @@
 * Add tags
 * Add link
 
-# Version 0.4.0
+## Version 0.4.0
 
-## Added
+### Added
 
 * Create experiment
 
-# Version 0.3.0
+## Version 0.3.0
 
-## Added
+### Added
 
 * File upload (fix #2)
 * Update instructions in README
 
-# Version 0.2.0
+## Version 0.2.0
 
-## Added
+### Added
 
 * Function to POST data (fix elabftw/elabftw#378)
 
-## Changed
+### Changed
 
 * Remove the documentation from the README as it's on doc.elabftw.net
