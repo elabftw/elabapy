@@ -1,4 +1,4 @@
-#!/bin/env python
+#!/usr/bin/env python
 
 #################################################################
 # This is an example script for showing how to use this library #
