@@ -35,5 +35,6 @@ Version needs to be changed in `setup.py` and `elabapy/__init__.py`.
 ~~~bash
 git tag -s $version -m '$version'
 git push --tags
-python setup.py sdist bdist_egg bdist_wheel upload
+python setup.py sdist bdist_egg bdist_wheel
+twine upload dist/*
 ~~~
