@@ -32,7 +32,7 @@ def someFunctionThatGetsDataFromSomething():
     return "Updated from API", "This is my data"
 
 # first create the "elab" object with the token and endpoint URL
-elab = elabapy.manager(token=API_KEY, endpoint=ENDPOINT)
+elab = elabapy.Manager(token=API_KEY, endpoint=ENDPOINT)
 
 # create an experiment
 new = elab.create_experiment()
