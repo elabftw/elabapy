@@ -53,6 +53,12 @@ class Manager(BaseAPI):
         """
         return self.get_data("items_types/")
 
+    def get_upload(self, id):
+        """
+            Get an uploaded file from ID
+        """
+        retrn self.get_data("uploads/" + str(id))
+
     def get_status(self):
         """
             Get list of status
