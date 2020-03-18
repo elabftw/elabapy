@@ -57,7 +57,7 @@ class Manager(BaseAPI):
         """
             Get an uploaded file from ID
         """
-        return self.get_data("uploads/" + str(id))
+        return self.get_binary("uploads/" + str(id))
 
     def get_status(self):
         """
