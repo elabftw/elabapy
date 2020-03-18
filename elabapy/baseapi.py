@@ -102,7 +102,7 @@ class BaseAPI(object):
     def get_data(self, url, type=GET, params=None):
         """
             This method is a basic implementation of __call_api that checks
-            errors too. In cas of success the method will return True or the
+            errors too. In case of success the method will return True or the
             content of the response to the request.
         """
         if params is None:
@@ -120,6 +120,38 @@ class BaseAPI(object):
 
         try:
             data = req.json()
+        except ValueError as e:
+            raise JSONReadError(
+                'Read failed from API: %s' % str(e)
+            )
+
+        if not req.ok:
+            msg = [data[m] for m in ("id", "message") if m in data][1]
+            raise DataReadError(msg)
+
+        return data
+    
+    def get_binary(self, url, type=GET, params=None):
+        """
+            This method is a basic implementation of __call_api that checks
+            errors too and returns the response as binary. In case of success
+            the method will return True or the content of the response to the request.
+        """
+        if params is None:
+            params = dict()
+
+        req = self.__perform_request(url, type, params)
+        if req.status_code == 204:
+            return True
+
+        if req.status_code == 404:
+            raise NotFoundError()
+
+        if req.status_code == 403:
+            return ACCESS_FORBIDDEN_MSG
+
+        try:
+            data = req.content
         except ValueError as e:
             raise JSONReadError(
                 'Read failed from API: %s' % str(e)
