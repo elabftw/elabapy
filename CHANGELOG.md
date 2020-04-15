@@ -1,5 +1,11 @@
 # Changelog for elabapy
 
+## Version 0.5.1
+
+### Added
+
+* Get backup zip
+
 ## Version 0.5.0
 
 ### Added

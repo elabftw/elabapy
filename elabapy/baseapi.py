@@ -99,7 +99,7 @@ class BaseAPI(object):
 
         return requests_method(url, verify=False, **kwargs)
 
-    def get_data(self, url, type=GET, params=None):
+    def get_data(self, url, type=GET, params=None, binary=False):
         """
             This method is a basic implementation of __call_api that checks
             errors too. In cas of success the method will return True or the
@@ -118,16 +118,19 @@ class BaseAPI(object):
         if req.status_code == 403:
             return ACCESS_FORBIDDEN_MSG
 
-        try:
-            data = req.json()
-        except ValueError as e:
-            raise JSONReadError(
-                'Read failed from API: %s' % str(e)
-            )
+        if binary:
+            data = req.content
+        else:
+            try:
+                data = req.json()
+            except ValueError as e:
+                raise JSONReadError(
+                    'Read failed from API: %s' % str(e)
+                )
 
-        if not req.ok:
-            msg = [data[m] for m in ("id", "message") if m in data][1]
-            raise DataReadError(msg)
+            if not req.ok:
+                msg = [data[m] for m in ("id", "message") if m in data][1]
+                raise DataReadError(msg)
 
         return data
 

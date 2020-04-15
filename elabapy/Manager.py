@@ -109,5 +109,9 @@ class Manager(BaseAPI):
         """
         return self.post_data("items/" + str(id), params)
 
+    def get_backup_zip(self, datespan):
+        """ Get the backup zip of modified experiments during datespan """
+        return self.get_data("backupzip/" + datespan, 'GET', None, True)
+
     def __str__(self):
         return "<Manager>"
