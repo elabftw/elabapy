@@ -13,8 +13,6 @@ POST = 'POST'
 DELETE = 'DELETE'
 PUT = 'PUT'
 
-ACCESS_FORBIDDEN_MSG = "You don't have permission to access this resource!"
-
 class Error(Exception):
     """Base exception class for this module"""
     pass
@@ -26,10 +24,6 @@ class DataReadError(Error):
     pass
 
 class JSONReadError(Error):
-    pass
-
-
-class NotFoundError(Error):
     pass
 
 class BaseAPI(object):
@@ -49,16 +43,13 @@ class BaseAPI(object):
         for attr in kwargs.keys():
             setattr(self, attr, kwargs[attr])
 
-    def __perform_request(self, url, type=GET, params=None):
+    def __perform_request(self, url, verb=GET, params={}):
         """
             This method will perform the real request,
             in this way we can customize only the "output" of the API call by
             using self.__call_api method.
             This method will return the request object.
         """
-        if params is None:
-            params = {}
-
         # check we have a token
         if not self.token:
             raise SetupError("No token provided.")
@@ -67,105 +58,58 @@ class BaseAPI(object):
         if not self.endpoint:
             raise SetupError("No endpoint provided.")
 
-        # don't show warning about self-signed certificate in dev mode
+        # check TLS cert by default
+        verify = True
         if self.dev:
+            # don't show warning about self-signed certificate in dev mode
             requests.packages.urllib3.disable_warnings()
+            # don't check cert validity
+            verify=False
 
+        # build url
         url = urljoin(self.endpoint, url)
 
-        # lookup table to find out the apropriate requests method,
-        # headers and payload type (json or query parameters)
-        identity = lambda x: x
-        json_dumps = lambda x: json.dumps(x)
-        lookup = {
-            GET: (requests.get, {}, 'params', identity),
-            POST: (requests.post, {'Content-type': 'application/json'}, 'data',
-                   json_dumps),
-            PUT: (requests.put, {'Content-type': 'application/json'}, 'data',
-                  json_dumps),
-            DELETE: (requests.delete,
-                     {'content-type': 'application/json'},
-                     'data', json_dumps),
+        # lookup table to find out the apropriate requests method and headers
+        method_map = {
+            GET: (requests.get, {}),
+            POST: (requests.post, {}),
+            DELETE: (requests.delete, {}),
         }
 
-        requests_method, headers, payload, transform = lookup[type]
+        requests_method, headers = method_map[verb]
         headers.update({'Authorization': self.token})
-        kwargs = {'headers': headers, payload: transform(params)}
+        # NOTE if data is changed to json then headers have application/json for content-type
+        kwargs = {'headers': headers, 'data': params, 'verify': verify}
 
         # remove token from log
         headers_str = str(headers).replace(self.token.strip(), 'TOKEN')
-        self._log.debug('%s %s %s:%s %s' %
-                        (type, url, payload, params, headers_str))
+        self._log.debug(f'{verb} {url} {params} {headers_str}')
 
-        return requests_method(url, verify=False, **kwargs)
+        # execute request
+        req = requests_method(url, **kwargs)
 
-    def get_data(self, url, type=GET, params=None, binary=False):
-        """
-            This method is a basic implementation of __call_api that checks
-            errors too. In cas of success the method will return True or the
-            content of the response to the request.
-        """
-        if params is None:
-            params = dict()
+        # this will raise the appropriate HTTPError exception
+        if not req.ok:
+            req.raise_for_status()
+        return req
 
-        req = self.__perform_request(url, type, params)
+    def send_req(self, url, params={}, verb=GET, binary=False):
+        """ Send the request to the api endpoint. """
+        req = self.__perform_request(url, verb, params)
+
+        # 204 No Content
         if req.status_code == 204:
             return True
-
-        if req.status_code == 404:
-            raise NotFoundError()
-
-        if req.status_code == 403:
-            return ACCESS_FORBIDDEN_MSG
 
         if binary:
             return req.content
 
         try:
-            data = req.json()
+            return req.json()
         except ValueError as e:
             raise JSONReadError(
                 'Read failed from API: %s' % str(e)
             )
-
-        if not req.ok:
-            msg = [data[m] for m in ("id", "message") if m in data][1]
-            raise DataReadError(msg)
-
-        return data
-
-    def post_data(self, url, params = {}, type=POST):
-        """
-            POST/DELETE some stuff to change title/date/body or create experiment
-        """
-        url = urljoin(self.endpoint, url)
-        headers = {'Authorization': self.token}
-        if (type == DELETE):
-            req = requests.delete(url, headers=headers, data=params, verify=False)
-        else:
-            req = requests.post(url, headers=headers, data=params, verify=False)
-
-        if req.status_code == 204:
-            return True
-
-        if req.status_code == 404:
-            raise NotFoundError()
-
-        if req.status_code == 403:
-            return ACCESS_FORBIDDEN_MSG
-
-        try:
-            data = req.json()
-        except ValueError as e:
-            raise JSONReadError(
-                'Read failed from API: %s' % str(e)
-            )
-
-        if not req.ok:
-            msg = [data[m] for m in ("id", "message") if m in data][1]
-            raise DataReadError(msg)
-
-        return data
 
     def post_file(self, url, params):
         """
@@ -177,9 +121,6 @@ class BaseAPI(object):
 
         if req.status_code == 204:
             return True
-
-        if req.status_code == 404:
-            raise NotFoundError()
 
         try:
             data = req.json()
