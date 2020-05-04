@@ -1,5 +1,19 @@
 # Changelog for elabapy
 
+## Version 0.6.0
+
+### Fixed
+
+* Fix the `get_upload()` function to return binary data instead of trying to parse a JSON response
+
+### Added
+
+* Add function `add_link_to_item()` to add a link to an item in database
+* Add `get_bookable()`
+* Add `create_event()`
+* Add `get_event()`
+* Add `destroy_event()`
+
 ## Version 0.5.1
 
 ### Added

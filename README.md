@@ -32,6 +32,10 @@ Version needs to be changed in `setup.py` and `elabapy/__init__.py`.
 
 ## Create new release
 
+Edit changelog.
+
+Tag, push, build, upload:
+
 ~~~bash
 git tag -s $version -m '$version'
 git push --tags

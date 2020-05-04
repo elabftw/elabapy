@@ -119,28 +119,31 @@ class BaseAPI(object):
             return ACCESS_FORBIDDEN_MSG
 
         if binary:
-            data = req.content
-        else:
-            try:
-                data = req.json()
-            except ValueError as e:
-                raise JSONReadError(
-                    'Read failed from API: %s' % str(e)
-                )
+            return req.content
 
-            if not req.ok:
-                msg = [data[m] for m in ("id", "message") if m in data][1]
-                raise DataReadError(msg)
+        try:
+            data = req.json()
+        except ValueError as e:
+            raise JSONReadError(
+                'Read failed from API: %s' % str(e)
+            )
+
+        if not req.ok:
+            msg = [data[m] for m in ("id", "message") if m in data][1]
+            raise DataReadError(msg)
 
         return data
 
-    def post_data(self, url, params):
+    def post_data(self, url, params = {}, type=POST):
         """
-            POST some stuff to change title/date/body or create experiment
+            POST/DELETE some stuff to change title/date/body or create experiment
         """
         url = urljoin(self.endpoint, url)
         headers = {'Authorization': self.token}
-        req = requests.post(url, headers=headers, data=params, verify=False)
+        if (type == DELETE):
+            req = requests.delete(url, headers=headers, data=params, verify=False)
+        else:
+            req = requests.post(url, headers=headers, data=params, verify=False)
 
         if req.status_code == 204:
             return True

@@ -15,13 +15,13 @@ class Manager(BaseAPI):
         """
             Create an experiment
         """
-        return self.post_data("experiments", params={})
+        return self.post_data("experiments")
 
     def create_item(self, id):
         """
             Create an item, the id is the items_types id
         """
-        return self.post_data("items/" + str(id), params={})
+        return self.post_data("items/" + str(id))
 
     def get_all_experiments(self):
         """
@@ -57,7 +57,7 @@ class Manager(BaseAPI):
         """
             Get an uploaded file from ID
         """
-        return self.get_data("uploads/" + str(id))
+        return self.get_data("uploads/" + str(id), 'GET', None, True)
 
     def get_status(self):
         """
@@ -84,6 +84,13 @@ class Manager(BaseAPI):
             params must contain "link=<ITEM_ID>"
         """
         return self.post_data("experiments/" + str(id), params)
+
+    def add_link_to_item(self, id, params):
+        """
+            Add a link to a database item
+            params must contain "link=<ITEM_ID>"
+        """
+        return self.post_data("items/" + str(id), params)
 
     def upload_to_experiment(self, id, params):
         """
@@ -112,6 +119,22 @@ class Manager(BaseAPI):
     def get_backup_zip(self, datespan):
         """ Get the backup zip of modified experiments during datespan """
         return self.get_data("backupzip/" + datespan, 'GET', None, True)
+
+    def get_bookable(self):
+        """ Get list of bookable items """
+        return self.get_data("bookable")
+
+    def create_event(self, id, params):
+        """ Create an event in the scheduler for a bookable item """
+        return self.post_data("events/" + str(id), params)
+
+    def get_event(self, id):
+        """ Get info about an event """
+        return self.get_data("events/" + str(id))
+
+    def destroy_event(self, id):
+        """ Destroy an event from the scheduler """
+        return self.post_data("events/" + str(id), params={}, type='DELETE')
 
     def __str__(self):
         return "<Manager>"

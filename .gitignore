@@ -31,3 +31,4 @@ MANIFEST
 .cache
 
 curl.sh
+.python-version
