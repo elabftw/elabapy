@@ -7,6 +7,7 @@ except ImportError:
 from .baseapi import BaseAPI
 from .baseapi import GET
 
+
 class Manager(BaseAPI):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

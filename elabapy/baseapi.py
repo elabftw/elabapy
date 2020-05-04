@@ -3,6 +3,7 @@ import os
 import json
 import logging
 import requests
+
 try:
     from urlparse import urljoin
 except ImportError:
@@ -13,23 +14,30 @@ POST = 'POST'
 DELETE = 'DELETE'
 PUT = 'PUT'
 
+
 class Error(Exception):
     """Base exception class for this module"""
+
     pass
+
 
 class SetupError(Error):
     pass
 
+
 class DataReadError(Error):
     pass
 
+
 class JSONReadError(Error):
     pass
+
 
 class BaseAPI(object):
     """
         Basic api class for elabapy
     """
+
     token = ""
     endpoint = ""
     dev = False
@@ -64,7 +72,7 @@ class BaseAPI(object):
             # don't show warning about self-signed certificate in dev mode
             requests.packages.urllib3.disable_warnings()
             # don't check cert validity
-            verify=False
+            verify = False
 
         # build url
         url = urljoin(self.endpoint, url)
@@ -107,9 +115,7 @@ class BaseAPI(object):
         try:
             return req.json()
         except ValueError as e:
-            raise JSONReadError(
-                'Read failed from API: %s' % str(e)
-            )
+            raise JSONReadError('Read failed from API: %s' % str(e))
 
     def post_file(self, url, params):
         """
@@ -125,9 +131,7 @@ class BaseAPI(object):
         try:
             data = req.json()
         except ValueError as e:
-            raise JSONReadError(
-                'Read failed from API: %s' % str(e)
-            )
+            raise JSONReadError('Read failed from API: %s' % str(e))
 
         if not req.ok:
             msg = [data[m] for m in ("id", "message") if m in data][1]
