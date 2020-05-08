@@ -1,6 +1,4 @@
 #!/usr/bin/env python
-from ez_setup import use_setuptools
-use_setuptools()
 from setuptools import setup
 
 long_description = """This library provides easy access to eLabFTW's API."""
