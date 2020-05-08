@@ -75,3 +75,5 @@ rm dist/*
 python setup.py sdist bdist_egg bdist_wheel
 twine upload dist/*
 ~~~
+
+Create release on GitHub.
