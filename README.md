@@ -11,11 +11,15 @@ This Python 3 library provides easy access to [eLabFTW](https://www.elabftw.net)
 
 You can install elabapy using **pip**
 
-    pip install -U elabapy
+    pip install --user elabapy
 
 or via sources:
 
     python setup.py install
+
+## How to update
+
+    pip install -U elabapy
 
 ## How to use
 
