@@ -5,7 +5,6 @@ except ImportError:
     from urllib.parse import urlparse, parse_qs
 
 from .baseapi import BaseAPI
-from .baseapi import GET
 
 
 class Manager(BaseAPI):
@@ -97,13 +96,13 @@ class Manager(BaseAPI):
         """
             Upload a file to an experiment
         """
-        return self.post_file("experiments/" + str(id), params)
+        return self.send_req("experiments/" + str(id), params, verb='POST', param_name='files')
 
     def upload_to_item(self, id, params):
         """
             Upload a file to an item
         """
-        return self.post_file("items/" + str(id), params)
+        return self.send_req("items/" + str(id), params, verb='POST', param_name='files')
 
     def add_tag_to_experiment(self, id, params):
         """
