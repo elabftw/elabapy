@@ -4,7 +4,7 @@
 [![wheel](https://img.shields.io/pypi/wheel/elabapy.svg)](https://pypi.org/project/elabapy/)
 [![license](https://img.shields.io/pypi/l/elabapy.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 
-This Python 3 library provides easy access to [eLabFTW](https://www.elabftw.net)'s API to list or update experiments or items.
+This Python 3 library provides easy access to [eLabFTW](https://www.elabftw.net)'s [API](https://doc.elabftw.net/api.html) to list or update experiments or items.
 
 
 ## Install
@@ -38,11 +38,6 @@ python setup.py install
 
 ### [API page on eLabFTW's documentation](https://doc.elabftw.net/api.html)
 ### [Full API doc with examples](https://doc.elabftw.net/api/)
-
-## Links
-
-- Documentation: https://doc.elabftw.net/api.html
-- PyPI page: https://pypi.org/project/elabapy/
 
 ## Dev stuff
 
