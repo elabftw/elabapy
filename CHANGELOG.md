@@ -2,6 +2,10 @@
 
 ## Version 0.6.0
 
+### BREAKING CHANGE
+
+* The `dev` keyword passed to `Manager` has been replaced by `verify`
+
 ### Fixed
 
 * Fix the `get_upload()` function to return binary data instead of trying to parse a JSON response
@@ -13,6 +17,8 @@
 * Add `create_event()`
 * Add `get_event()`
 * Add `destroy_event()`
+* Add type hinting
+* Add GitHub actions
 
 ## Version 0.5.1
 
