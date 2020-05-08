@@ -71,6 +71,7 @@ Tag, push, build, upload:
 ~~~bash
 git tag -s $version -m '$version'
 git push --tags
+rm dist/*
 python setup.py sdist bdist_egg bdist_wheel
 twine upload dist/*
 ~~~
