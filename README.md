@@ -7,23 +7,37 @@
 This Python 3 library provides easy access to [eLabFTW](https://www.elabftw.net)'s API to list or update experiments or items.
 
 
-## How to install
+## Install
 
 You can install elabapy using **pip**
 
-    pip install --user elabapy
+~~~bash
+pip install --user elabapy
+~~~
+
+or via **conda**:
+
+~~~bash
+conda skeleton pypi elabapy
+conda-build elabapy
+~~~
 
 or via sources:
 
-    python setup.py install
+~~~bash
+git clone https://github.com/elabftw/elabapy
+cd elabapy
+python setup.py install
+~~~
 
-## How to update
+## Update
 
     pip install -U elabapy
 
-## How to use
+## Use
 
-### [Read the docs](https://doc.elabftw.net/api.html)
+### [API page on eLabFTW's documentation](https://doc.elabftw.net/api.html)
+### [Full API doc with examples](https://doc.elabftw.net/api/)
 
 ## Links
 
