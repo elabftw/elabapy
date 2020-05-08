@@ -26,9 +26,18 @@ or via sources:
 - Documentation: https://doc.elabftw.net/api.html
 - PyPI page: https://pypi.org/project/elabapy/
 
-## Update version
+## Dev stuff
+
+### Update version
 
 Version needs to be changed in `setup.py` and `elabapy/__init__.py`.
+
+### Check typing
+
+~~~bash
+# mypy type hinting check
+pipenv run python -m mypy elabapy
+~~~
 
 ## Create new release
 

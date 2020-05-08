@@ -1,21 +1,22 @@
 # -*- coding: utf-8 -*-
-import os
 import json
 import logging
-import requests
-from typing import Dict
+import os
+from typing import Dict, Tuple
+from urllib.parse import urljoin
 
-try:
-    from urlparse import urljoin
-except ImportError:
-    from urllib.parse import urljoin
+import requests
+
 
 class Error(Exception):
     """Base exception class for this module"""
+
     pass
+
 
 class SetupError(Error):
     pass
+
 
 class BaseAPI(object):
     """
@@ -42,7 +43,14 @@ class BaseAPI(object):
         if not self.endpoint:
             raise SetupError("No endpoint provided.")
 
-    def send_req(self, url: str, params: Dict = {}, verb: str = 'GET', binary: bool = False, param_name: str = 'data'):
+    def send_req(
+        self,
+        url: str,
+        params: Dict = {},
+        verb: str = 'GET',
+        binary: bool = False,
+        param_name: str = 'data',
+    ):
         """ Send the request to the api endpoint. """
         # don't show warnings if we chose to disable certificate verification
         if self.verify == False:
@@ -52,7 +60,7 @@ class BaseAPI(object):
         url = urljoin(self.endpoint, url)
 
         # lookup table to find out the apropriate requests method and headers
-        method_map = {
+        method_map: Dict[str, Tuple] = {
             'GET': (requests.get, {}),
             'POST': (requests.post, {}),
             'DELETE': (requests.delete, {}),

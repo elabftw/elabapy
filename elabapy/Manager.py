@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-try:
-    from urlparse import urlparse, parse_qs
-except ImportError:
-    from urllib.parse import urlparse, parse_qs
-
 from .baseapi import BaseAPI
 
 
@@ -96,13 +91,17 @@ class Manager(BaseAPI):
         """
             Upload a file to an experiment
         """
-        return self.send_req("experiments/" + str(id), params, verb='POST', param_name='files')
+        return self.send_req(
+            "experiments/" + str(id), params, verb='POST', param_name='files'
+        )
 
     def upload_to_item(self, id, params):
         """
             Upload a file to an item
         """
-        return self.send_req("items/" + str(id), params, verb='POST', param_name='files')
+        return self.send_req(
+            "items/" + str(id), params, verb='POST', param_name='files'
+        )
 
     def add_tag_to_experiment(self, id, params):
         """

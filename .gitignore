@@ -32,3 +32,4 @@ MANIFEST
 
 curl.sh
 .python-version
+.mypy_cache/

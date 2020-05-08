@@ -1,11 +1,7 @@
 #!/usr/bin/env python
-import os
-try:
-    from setuptools import setup
-except ImportError:
-    from ez_setup import use_setuptools
-    use_setuptools()
-    from setuptools import setup
+from ez_setup import use_setuptools
+use_setuptools()
+from setuptools import setup
 
 long_description = """This library provides easy access to eLabFTW's API."""
 
@@ -14,7 +10,7 @@ setup(
     version='0.6.0',
     description='elabftw API to manage experiments and items',
     author='Nicolas CARPi',
-    author_email='nicolas.carpi@curie.fr',
+    author_email='nico-git@deltablot.email',
     url='https://github.com/elabftw/elabapy',
     packages=['elabapy'],
     install_requires=['requests'],

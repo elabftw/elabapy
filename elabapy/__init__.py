@@ -7,5 +7,5 @@ __author_email__ = "nico-git@deltablot.email"
 __license__ = "GPL v3"
 __copyright__ = "Copyright (©) 2017 Nicolas CARPi"
 
-from .Manager import Manager
 from .baseapi import Error, SetupError
+from .Manager import Manager
