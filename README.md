@@ -32,18 +32,9 @@ or via sources:
 
 ## Dev stuff
 
-### Update version
+### Create new release
 
 Version needs to be changed in `setup.py` and `elabapy/__init__.py`.
-
-### Check typing
-
-~~~bash
-# mypy type hinting check
-pipenv run python -m mypy elabapy
-~~~
-
-## Create new release
 
 Edit changelog.
 
