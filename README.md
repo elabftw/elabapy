@@ -39,6 +39,25 @@ python setup.py install
 ### [API page on eLabFTW's documentation](https://doc.elabftw.net/api.html)
 ### [Full API doc with examples](https://doc.elabftw.net/api/)
 
+### Example script
+
+~~~python
+import elabapy
+import json
+from requests.exceptions import HTTPError
+# initialize the manager with an endpoint and your token
+manager = elabapy.Manager(endpoint="https://elab.example.org/api/v1/", token="3ca8...e14b")
+# get experiment with id 42
+try:
+    exp = manager.get_experiment(42)
+    print(json.dumps(exp, indent=4, sort_keys=True))
+# if something goes wrong, the corresponding HTTPError will be raised
+except HTTPError as e:
+    print(e)
+~~~
+
+Use `verify=False` in the Manager initialization to disable TLS certificate verification.
+
 ## Dev stuff
 
 ### Create new release
