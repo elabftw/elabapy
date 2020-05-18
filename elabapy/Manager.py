@@ -10,7 +10,7 @@ class Manager(BaseAPI):
         """
             Create an experiment
         """
-        return self.send_req("experiments")
+        return self.send_req("experiments", verb='POST')
 
     def create_item(self, id):
         """
