@@ -1,5 +1,9 @@
 # Changelog for elabapy
 
+## Version 0.6.1
+
+* Fix create experiment/items not sending POST requests
+
 ## Version 0.6.0
 
 ### BREAKING CHANGE

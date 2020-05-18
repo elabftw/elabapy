@@ -10,13 +10,13 @@ class Manager(BaseAPI):
         """
             Create an experiment
         """
-        return self.send_req("experiments")
+        return self.send_req("experiments", verb='POST')
 
     def create_item(self, id):
         """
             Create an item, the id is the items_types id
         """
-        return self.send_req("items/" + str(id))
+        return self.send_req("items/" + str(id), verb='POST')
 
     def get_all_experiments(self):
         """
