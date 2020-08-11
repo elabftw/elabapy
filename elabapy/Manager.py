@@ -117,7 +117,7 @@ class Manager(BaseAPI):
 
     def get_backup_zip(self, datespan):
         """ Get the backup zip of modified experiments during datespan """
-        return self.send_req("backupzip/" + datespan, 'GET', None, True)
+        return self.send_req("backupzip/" + datespan, verb='GET', binary=True)
 
     def get_bookable(self):
         """ Get list of bookable items """

@@ -1,5 +1,9 @@
 # Changelog for elabapy
 
+## Version 0.6.2
+
+* Fix the backup_zip function
+
 ## Version 0.6.1
 
 * Fix create experiment/items not sending POST requests
