@@ -131,6 +131,10 @@ class Manager(BaseAPI):
         """ Get info about an event """
         return self.send_req("events/" + str(id))
 
+    def get_all_events(self):
+        """ Get info about all events """
+        return self.send_req("events/")
+
     def destroy_event(self, id):
         """ Destroy an event from the scheduler """
         return self.send_req("events/" + str(id), params={}, verb='DELETE')
