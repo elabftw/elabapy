@@ -1,5 +1,9 @@
 # Changelog for elabapy
 
+## Version 0.7.0
+
+* Add `get_all_events()`
+
 ## Version 0.6.2
 
 * Fix the backup_zip function
