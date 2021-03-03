@@ -54,6 +54,12 @@ class Manager(BaseAPI):
         """
         return self.send_req("items_types/")
 
+    def get_tags(self):
+        """
+            Get tags from the team
+        """
+        return self.send_req("tags/")
+
     def get_upload(self, id):
         """
             Get an uploaded file from ID

@@ -1,5 +1,9 @@
 # Changelog for elabapy
 
+## Version 0.7.1
+
+* Add `get_tags()`
+
 ## Version 0.7.0
 
 * Add `get_all_events()`
