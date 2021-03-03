@@ -18,6 +18,12 @@ class Manager(BaseAPI):
         """
         return self.send_req("items/" + str(id), verb='POST')
 
+    def create_template(self):
+        """
+            Create a template
+        """
+        return self.send_req("templates", verb='POST')
+
     def get_all_experiments(self):
         """
             This function returns a list of all experiments.
@@ -60,6 +66,18 @@ class Manager(BaseAPI):
         """
         return self.send_req("status/")
 
+    def get_all_templates(self):
+        """
+            This function returns a list of all templates.
+        """
+        return self.send_req("templates/")
+
+    def get_template(self, id):
+        """
+            This function returns data from a template.
+        """
+        return self.send_req("templates/" + str(id))
+
     def post_experiment(self, id, params):
         """
             Change an experiment title/body/date
@@ -72,6 +90,12 @@ class Manager(BaseAPI):
             params must contain title, date and body
         """
         return self.send_req("items/" + str(id), params, verb='POST')
+
+    def post_template(self, id, params):
+        """
+            Change a template title/body/date
+        """
+        return self.send_req("templates/" + str(id), params, verb='POST')
 
     def add_link_to_experiment(self, id, params):
         """
