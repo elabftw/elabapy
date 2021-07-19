@@ -99,7 +99,7 @@ class Manager(BaseAPI):
 
     def post_template(self, id, params):
         """
-            Change a template title/body/date
+            Change a template title/body/metadata
         """
         return self.send_req("templates/" + str(id), params, verb='POST')
 
