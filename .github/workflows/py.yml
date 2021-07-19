@@ -30,5 +30,4 @@ jobs:
     - name: Test with mypy
       run: |
         pip install mypy
-        yes | mypy --install-types
-        mypy elabapy
+        mypy elabapy --install-types --non-interactive
