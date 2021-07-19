@@ -25,6 +25,7 @@ class BaseAPI(object):
 
     token: str = ""
     endpoint: str = ""
+    proxies: dict = None
     # verify TLS cert?
     verify: bool = True
 
@@ -69,7 +70,7 @@ class BaseAPI(object):
         requests_method, headers = method_map[verb]
         headers.update({'Authorization': self.token})
         # NOTE if data is changed to json then headers have application/json for content-type
-        kwargs = {'headers': headers, param_name: params, 'verify': self.verify}
+        kwargs = {'headers': headers, param_name: params, 'verify': self.verify, 'proxies': self.proxies}
 
         # remove token from log
         headers_str = str(headers).replace(self.token.strip(), 'TOKEN')
