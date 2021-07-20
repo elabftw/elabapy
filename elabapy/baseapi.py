@@ -25,7 +25,7 @@ class BaseAPI(object):
 
     token: str = ""
     endpoint: str = ""
-    proxies: Optional[dict] = None
+    proxies: Optional[Dict[str, str]] = None
     # verify TLS cert?
     verify: bool = True
 
