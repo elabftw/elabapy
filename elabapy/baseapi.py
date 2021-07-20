@@ -2,7 +2,7 @@
 import json
 import logging
 import os
-from typing import Dict, Tuple
+from typing import Dict, Tuple, Optional
 from urllib.parse import urljoin
 
 import requests
@@ -25,7 +25,7 @@ class BaseAPI(object):
 
     token: str = ""
     endpoint: str = ""
-    proxies: dict = None
+    proxies: Optional[dict] = None
     # verify TLS cert?
     verify: bool = True
 
