@@ -1,5 +1,9 @@
 # Changelog for elabapy
 
+## Version 0.8.1
+
+* Publish new releases automatically with GitHub Action (#27 by Niels Cautaerts)
+
 ## Version 0.8.0
 
 * Add proxies option (#25 by Jean-Luc Parouty)

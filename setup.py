@@ -5,7 +5,7 @@ long_description = """This library provides easy access to eLabFTW's API."""
 
 setup(
     name='elabapy',
-    version='0.8.0',
+    version='0.8.1',
     description='elabftw API to manage experiments and items',
     author='Nicolas CARPi',
     author_email='nico-git@deltablot.email',
