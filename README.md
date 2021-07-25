@@ -62,18 +62,10 @@ Use `verify=False` in the Manager initialization to disable TLS certificate veri
 
 ### Create new release
 
-Version needs to be changed in `setup.py` and `elabapy/__init__.py`.
+* Update version in `setup.py` and `elabapy/__init__.py`
+* Update changelog
+* Commit
+* Tag
+* Create release on GitHub
 
-Edit changelog.
-
-Tag, push, build, upload:
-
-~~~bash
-git tag -s $version -m '$version'
-git push --tags
-rm dist/*
-python setup.py sdist bdist_egg bdist_wheel
-twine upload dist/*
-~~~
-
-Create release on GitHub.
+A GitHub Action will take care of publishing it to Pypi.org.
