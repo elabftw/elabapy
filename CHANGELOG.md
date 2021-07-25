@@ -1,5 +1,10 @@
 # Changelog for elabapy
 
+## Version 0.8.0
+
+* Add proxies option (#25 by Jean-Luc Parouty)
+* Add experiments templates endpoint (#19 by @m6121)
+
 ## Version 0.7.1
 
 * Add `get_tags()`
