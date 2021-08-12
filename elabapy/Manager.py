@@ -28,7 +28,7 @@ class Manager(BaseAPI):
         """
             This function returns a list of all experiments.
         """
-        return self.send_req("experiments/")
+        return self.send_req("experiments/", params, param_name='params')
 
     def get_experiment(self, id):
         """
