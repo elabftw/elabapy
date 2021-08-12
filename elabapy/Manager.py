@@ -36,11 +36,11 @@ class Manager(BaseAPI):
         """
         return self.send_req("experiments/" + str(id))
 
-    def get_all_items(self):
+    def get_all_items(self, params):
         """
             Return all items
         """
-        return self.send_req("items/")
+        return self.send_req("items/" , params, param_name='params')
 
     def get_item(self, id):
         """
