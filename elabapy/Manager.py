@@ -24,7 +24,7 @@ class Manager(BaseAPI):
         """
         return self.send_req("templates", verb='POST')
 
-    def get_all_experiments(self):
+    def get_all_experiments(self, params={'limit':15,'offset':0}):
         """
             This function returns a list of all experiments.
         """
@@ -36,7 +36,7 @@ class Manager(BaseAPI):
         """
         return self.send_req("experiments/" + str(id))
 
-    def get_all_items(self, params):
+    def get_all_items(self, params={'limit':15,'offset':0}):
         """
             Return all items
         """
