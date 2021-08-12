@@ -28,7 +28,7 @@ class Manager(BaseAPI):
         """
             This function returns a list of all experiments.
             params is a dict with keys 'limit' and/or 'offset'
-            param_name has to be 'params' to be in accordance with the current requests-doku (https://2.python-requests.org/en/master/api/#requests.get)
+            param_name has to be 'params' to be in accordance with the current requests documentation (https://2.python-requests.org/en/master/api/#requests.get)
         """
         return self.send_req("experiments/", params, param_name='params')
 
@@ -42,7 +42,7 @@ class Manager(BaseAPI):
         """
             Return all items
             params is a dict with keys 'limit' and/or 'offset'
-            param_name has to be 'params' to be in accordance with the current requests-doku (https://2.python-requests.org/en/master/api/#requests.get)
+            param_name has to be 'params' to be in accordance with the current requests documentation (https://2.python-requests.org/en/master/api/#requests.get)
         """
         return self.send_req("items/" , params, param_name='params')
 
