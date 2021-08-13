@@ -24,11 +24,13 @@ class Manager(BaseAPI):
         """
         return self.send_req("templates", verb='POST')
 
-    def get_all_experiments(self):
+    def get_all_experiments(self, params={'limit':15,'offset':0}):
         """
             This function returns a list of all experiments.
+            params is a dict with keys 'limit' and/or 'offset'
+            param_name has to be 'params' to be in accordance with the current requests documentation (https://2.python-requests.org/en/master/api/#requests.get)
         """
-        return self.send_req("experiments/")
+        return self.send_req("experiments/", params, param_name='params')
 
     def get_experiment(self, id):
         """
@@ -36,11 +38,13 @@ class Manager(BaseAPI):
         """
         return self.send_req("experiments/" + str(id))
 
-    def get_all_items(self):
+    def get_all_items(self, params={'limit':15,'offset':0}):
         """
             Return all items
+            params is a dict with keys 'limit' and/or 'offset'
+            param_name has to be 'params' to be in accordance with the current requests documentation (https://2.python-requests.org/en/master/api/#requests.get)
         """
-        return self.send_req("items/")
+        return self.send_req("items/" , params, param_name='params')
 
     def get_item(self, id):
         """
