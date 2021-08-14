@@ -1,5 +1,9 @@
 # Changelog for elabapy
 
+## Version 0.8.2
+
+* Allow using limit and offset for get_all methods (#28 by @JAC28)
+
 ## Version 0.8.1
 
 * Publish new releases automatically with GitHub Action (#27 by Niels Cautaerts)
