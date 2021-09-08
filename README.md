@@ -1,6 +1,7 @@
 # elabapy
 
 [![release](https://img.shields.io/pypi/v/elabapy.svg)](https://pypi.org/project/elabapy/)
+[![condarelease](https://anaconda.org/conda-forge/elabapy/badges/version.svg)](https://anaconda.org/conda-forge/elabapy)
 [![wheel](https://img.shields.io/pypi/wheel/elabapy.svg)](https://pypi.org/project/elabapy/)
 [![license](https://img.shields.io/pypi/l/elabapy.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 
@@ -9,20 +10,19 @@ This Python 3 library provides easy access to [eLabFTW](https://www.elabftw.net)
 
 ## Install
 
-You can install elabapy using **pip**
+You can install elabapy using **pip**:
 
 ~~~bash
 pip install --user elabapy
 ~~~
 
-or via **conda**:
+or via **conda-forge**:
 
 ~~~bash
-conda skeleton pypi elabapy
-conda-build elabapy
+conda install -c conda-forge elabapy
 ~~~
 
-or via sources:
+or from source:
 
 ~~~bash
 git clone https://github.com/elabftw/elabapy
