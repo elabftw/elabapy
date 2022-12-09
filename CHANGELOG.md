@@ -1,5 +1,10 @@
 # Changelog for elabapy
 
+## Version 1.0.0
+
+* Update dependencies.
+* No breaking changes with version 0.x.
+
 ## Version 0.8.2
 
 * Allow using limit and offset for get_all methods (#28 by @JAC28)

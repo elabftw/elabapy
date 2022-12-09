@@ -7,6 +7,11 @@
 
 This Python 3 library provides easy access to [eLabFTW](https://www.elabftw.net)'s [API](https://doc.elabftw.net/api.html) to list or update experiments or items.
 
+# API Versions
+
+This library works with eLabFTW's API v1. It is recommended to use API v2. A python package is available for API v2, see this repository:
+
+### APIv2 Python lib: https://github.com/elabftw/elabapi-python/
 
 ## Install
 
@@ -37,7 +42,7 @@ python setup.py install
 ## Use
 
 ### [API page on eLabFTW's documentation](https://doc.elabftw.net/api.html)
-### [Full API doc with examples](https://doc.elabftw.net/api/)
+### [Full API doc with examples](https://doc.elabftw.net/api/v1)
 
 ### Example script
 
