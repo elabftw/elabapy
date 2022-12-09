@@ -6,6 +6,7 @@ from typing import Dict, Tuple, Optional
 from urllib.parse import urljoin
 
 import requests
+import urllib3
 
 
 class Error(Exception):
@@ -55,7 +56,7 @@ class BaseAPI(object):
         """ Send the request to the api endpoint. """
         # don't show warnings if we chose to disable certificate verification
         if self.verify == False:
-            requests.packages.urllib3.disable_warnings()
+            urllib3.disable_warnings()
 
         # build url
         url = urljoin(self.endpoint, url)

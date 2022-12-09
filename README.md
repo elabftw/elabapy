@@ -65,6 +65,14 @@ Use `verify=False` in the Manager initialization to disable TLS certificate veri
 
 ## Dev stuff
 
+### Install dependencies
+
+`pipenv sync -d`
+
+### Run mypy
+
+`pipenv run python -m mypy elabapy`
+
 ### Create new release
 
 * Update version in `setup.py` and `elabapy/__init__.py`
