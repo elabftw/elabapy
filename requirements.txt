@@ -6,7 +6,7 @@
 #
 
 -i https://pypi.org/simple
-certifi==2021.5.30
+certifi==2022.12.7
 charset-normalizer==2.0.3; python_version >= '3'
 idna==3.2; python_version >= '3'
 requests==2.26.0
