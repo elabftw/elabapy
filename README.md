@@ -13,6 +13,10 @@ This library works with eLabFTW's API v1. It is recommended to use API v2. A pyt
 
 ### APIv2 Python lib: https://github.com/elabftw/elabapi-python/
 
+# WARNING: DEPRECATED LIBRARY
+
+Because this package is for APIv1 and APIv1 is deprecated from eLab, this library is therefore also deprecated and should not be used.
+
 ## Install
 
 You can install elabapy using **pip**:
@@ -82,3 +86,7 @@ Use `verify=False` in the Manager initialization to disable TLS certificate veri
 * Create release on GitHub
 
 A GitHub Action will take care of publishing it to Pypi.org.
+
+### Update requirements.txt
+
+`pipenv requirements > requirements.txt`
